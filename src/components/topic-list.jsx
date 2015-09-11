@@ -1,6 +1,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var TopicStore = require('../stores/topic-store');
+var Actions = require('../actions');
 
 module.exports = React.createClass({
 	mixins: [
@@ -12,7 +13,7 @@ module.exports = React.createClass({
 		}
 	},
 	componentWillMount: function(){
-		TopicStore.getTopics();
+		Actions.getTopics();
 	},
 	render: function(){
 		return <div className="list-group">
@@ -21,8 +22,9 @@ module.exports = React.createClass({
 	},
 	renderTopics: function(){
 		return this.state.topics.map(function(topic){
-			return <li> 
-			{topic}
+			return <li className="list-group-item" key={topic.id}>
+				<h4>{topic.name}</h4> 
+				<p>{topic.description}</p>
 			</li>
 		});
 	},
