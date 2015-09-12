@@ -1,4 +1,3 @@
-ReactStarter
 
 to run on local host 8000
 ```
